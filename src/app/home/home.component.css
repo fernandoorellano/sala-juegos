@@ -1,0 +1,8 @@
+.container{  
+    display: flex;
+  justify-content: center;
+}
+.left{ 
+    padding-top: 2%; 
+    float: left;  
+}

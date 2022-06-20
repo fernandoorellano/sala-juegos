@@ -1,0 +1,17 @@
+<div class="container" > 
+    <h1>Bienvenido a la sala de juegos</h1><br>
+</div>
+<div class="left" *ngIf="user$ | async as user; then verdadero; else falso" style="display:none"> 
+  
+
+</div>
+<ng-template #falso>
+  <div>
+    <p>Es la primera vez que visitas la pagina? <a routerLink="/register">Registrate campeon</a></p> 
+  </div>
+</ng-template>
+
+<ng-template #verdadero>
+  <div>
+</div>
+</ng-template>

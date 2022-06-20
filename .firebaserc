@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "proyecto-juegos-313c9": {
+      "hosting": {
+        "proyecto-juegos": [
+          "proyecto-juegos-313c9"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "proyecto-juegos-313c9"
+  }
+}

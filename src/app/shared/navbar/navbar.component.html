@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/">Home</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav me-auto" > 
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/quiensoy">Quien soy</a>
+          </li>  
+          <li class="nav-item dropdown" *ngIf="user$ | async as user">
+            
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" 
+            role="button" data-bs-toggle="dropdown" aria-expanded="false" *ngIf="user">
+              Juegos
+            </a>
+           
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" >
+              <li>
+                <a class="dropdown-item" routerLink="/juegos/ppt">Piedra papel o tijera</a>
+                <a class="dropdown-item" routerLink="/juegos/tateti">Tateti</a>
+                <a class="dropdown-item" routerLink="/juegos/adivina">Adivina el numero</a>
+                <a class="dropdown-item" routerLink="/juegos/ahorcado">Ahorcado</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+ 
+          <ul class="navbar-nav mx-auto" *ngIf="user$ | async as user; else login">
+            <li class="nav-item" *ngIf="user">
+              <a href="#" class="nav-link" (click)="onLogout()">Logout</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link">{{user?.email}}</a>
+            </li>
+          </ul>
+          <ng-template #login>
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/login">Login </a>
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/register">Registrar</a>
+              </li> 
+            </ul>
+          </ng-template>
+      </div>
+    </div>
+  </nav>

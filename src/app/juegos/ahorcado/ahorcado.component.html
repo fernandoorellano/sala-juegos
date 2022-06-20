@@ -1,0 +1,33 @@
+<div class="container">
+<p>{{mensajeIngreso}}: {{letrasElegidas}} </p>
+  
+<div class="row">
+    <div class="col-12">
+        &nbsp;
+        <span *ngFor="let esp of  espacios ">
+             <span *ngIf="contiene(esp)">
+                {{esp}} &nbsp; 
+            </span>
+            <span *ngIf="!contiene(esp)">
+                _ &nbsp;
+            </span>
+        </span>
+    </div>
+</div><br>
+ 
+<button (click)="validar(i)" *ngFor="let item of abece; index as i" [disabled]="state">{{item}}
+
+
+</button>
+<br><br>
+<p>{{mensajeErrores}}</p>
+<p *ngIf="errores>0">{{mensajeError}}</p>
+<button *ngIf="volverJuegos" (click)="recargarJuego()">Volver a jugar</button>
+</div>
+
+
+
+
+
+
+

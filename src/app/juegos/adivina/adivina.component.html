@@ -1,0 +1,21 @@
+<div class="container">
+    <a >{{mensajeInicio}}</a><br>
+    <a >{{mensajeValidar}}</a>
+</div>
+<div >
+    <div class="fila" id="cont">
+        <div>
+            <div *ngIf ="confirmacion">
+                <input type="number" [(ngModel)] = "numeroIngresado" [ngModelOptions]="{standalone: true}" placeholder="Ingrese un numero">
+                <button (click) = verificar()>Verificar</button>
+                <input type="hidden" [(ngModel)] = "numeroIntento" [ngModelOptions]="{standalone: true}">
+            </div>
+        </div>
+    </div>
+    <div>
+        <div *ngIf="!confirmacion">
+            <button (click) = generarRandom() class="btn btn-lg">iniciar juego</button><br><br> <!-- Boton Inicia el random -->
+        </div>
+        <button class="btn btn-lg" routerLink="/">Volver</button>
+    </div>
+</div>
