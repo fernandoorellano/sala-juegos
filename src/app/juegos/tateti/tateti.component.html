@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row1">
+    <div *ngIf="!botonesEleccion" class="btn">
+      <h4>Selecciona tu ficha:</h4><br><br>
+      <button (click)="eleccionSigno('X')"><img src="assets/img/X.png"></button>
+      <button (click)="eleccionSigno('O')"><img src="assets/img/O.png"></button>
+    </div>
+    <div *ngIf="!botonesJuego" class="btn">
+      <h4>Elegi una opcion</h4> 
+      <div>
+          <button (click)="modificar(0)" [disabled]="state"><img id="rc0"></button>
+          <button (click)="modificar(1)" [disabled]="state"><img id="rc1"></button>
+          <button (click)="modificar(2)" [disabled]="state"><img id="rc2"></button>
+      </div>
+      <div>
+          <button (click)="modificar(3)" [disabled]="state"><img id="rc3"></button>
+          <button (click)="modificar(4)" [disabled]="state"><img id="rc4"></button>
+          <button (click)="modificar(5)" [disabled]="state"><img id="rc5"></button>
+      </div>
+      <div>
+          <button (click)="modificar(6)" [disabled]="state"><img id="rc6"></button>
+          <button (click)="modificar(7)" [disabled]="state"><img id="rc7"></button>
+          <button (click)="modificar(8)" [disabled]="state"><img id="rc8"></button>
+      </div>
+    </div>
+  </div> 
+  <br>
+    <div *ngIf="resultado == 'Perdio'"> 
+        Perdiste :s
+    </div>
+    <div *ngIf="resultado == 'Empate'"> 
+        Empataste
+    </div>
+    <div *ngIf="resultado == 'Gano'"> 
+        Ganaste :D
+    </div>
+  <br>
+  <div>
+    <button class="btn btn-lg" routerLink="/">Ir a inicio</button>
+    <div *ngIf="!terminoJuego">
+      <button class="btn btn-lg" (click)="reiniciarJuego()">Reiniciar juego</button>
+    </div>
+  </div>
+</div>

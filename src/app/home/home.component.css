@@ -1,0 +1,15 @@
+.container{  
+    display: flex;
+  justify-content: center;
+}
+.left{ 
+    padding-top: 2%; 
+    float: left;  
+}
+
+.btn img{ 
+  width: 70px;
+  height: 70px;
+   padding: 0;
+   margin: 0;
+}

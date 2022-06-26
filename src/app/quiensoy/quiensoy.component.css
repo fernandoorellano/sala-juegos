@@ -1,0 +1,40 @@
+.container{  
+    display: flex;
+  justify-content: center;
+}
+
+.left{ 
+    padding-top: 2%; 
+    float: left;  
+}
+
+img{
+    width: 320px;
+    height: 220px; 
+    padding-right: 70px;
+}
+
+.center{
+    padding-top: 2%;
+    text-align: center;
+    float: center;
+    padding-right: 70px;
+}
+
+.right{ 
+    padding-top: 2%;
+    text-align: center;
+    float: right;  
+    padding-right: 70px;
+} 
+
+.right p {
+    padding-left: 50px;
+}
+
+p{
+    padding-top: 2%;
+    text-align: center;
+    max-width: 270px;
+    max-height: 270px; 
+}

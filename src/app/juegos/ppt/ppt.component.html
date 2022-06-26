@@ -1,0 +1,25 @@
+<div class="container">
+    <b>Puntuacion:<br> Usuario:{{puntuacion}} pc: {{puntajePc}} </b>
+</div>
+<a >{{mensaje}}</a>
+<div class="fila" id="cont">
+    <div class="card opcion" (click)="juego('piedra');">
+        <div class="card-body">
+            <img class="card-img-top" src="../../../assets/img/piedra.png">
+            <p class="card-text" aria-hidden="true">piedra</p>
+        </div>
+    </div>
+    <div class="card opcion" (click)="juego('papel')">
+        <div class="card-body">
+            <img class="card-img-top" src=" ../../../assets/img/papel.png ">
+            <p class="card-text">papel</p>
+        </div>
+    </div>
+    <div class="card opcion" (click)="juego('tijera');">
+        <div class="card-body ">
+            <img class="card-img-top " src="../../../assets/img/tijera.png ">
+            <p class="card-text ">tijera</p>
+        </div>
+    </div>
+</div>
+<button type="button" class="btn btn-lg" routerLink="/"  type="submit">Ir a inicio</button>

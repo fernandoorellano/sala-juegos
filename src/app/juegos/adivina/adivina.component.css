@@ -1,0 +1,48 @@
+img{
+    width: 30px;
+    height: 30px;
+	margin-top: 70px;
+}
+
+.container {
+    text-align: center;
+    margin: 30px;
+    width: 600px;
+    height: 40px;
+}
+
+.opcion { 
+    width: 260px;
+    height: 260px;
+    align-items: center;
+    justify-content: center; 
+}
+
+.funcion {
+    pointer-events: none;
+}
+
+.msj {
+    margin-left: 3em;
+    display: block
+}
+
+.opcion:hover {
+    opacity: 0.5;
+	cursor: pointer;
+}
+
+.botonHome {
+    position: relative;
+    float: right;
+}
+
+.fila {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center !important; 
+    text-align: center;
+    width: 100%;
+    margin-top: 2em;
+}
+ 
