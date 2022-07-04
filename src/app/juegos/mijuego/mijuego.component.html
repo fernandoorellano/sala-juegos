@@ -1,0 +1,13 @@
+<div class="container">
+    <div>
+      <div class="btns"> 
+          <button class="btn" (click)="mostrarValor(i)" *ngFor="let item of arrayNum; index as i"
+          [disabled]="state">
+            {{item}} 
+          </button> 
+          <button class="btnReinicio" *ngIf="volverJuegos" (click)="recargarJuego()">Volver a jugar</button>
+      </div>
+      <h3>Intenta encontrar los valores escondidos</h3>
+      <h3>{{mensajeErrores}}</h3>
+  </div>
+</div>   

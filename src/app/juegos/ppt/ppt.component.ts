@@ -13,9 +13,12 @@ export class PptComponent implements OnInit {
     max: number = 3;
     min: number = 1;  
     seleccionPc: string = ''; //para empezar como de vacío
-   
+    state = false;
+    volverJuegos: boolean;
   
-    constructor() {} 
+    constructor() {
+      this.volverJuegos= false;
+    } 
   
     juego(seleccion: string) {
     
@@ -44,8 +47,9 @@ export class PptComponent implements OnInit {
             (this.seleccionPc == 'papel' && seleccion == 'piedra') ||
             (this.seleccionPc == 'tijera' && seleccion == 'papel')
           ) {
-            this.mensaje = this.mensaje+this.seleccionPc+'. Perdiste';
             this.puntajePc++;
+            this.mensaje = this.mensaje+this.seleccionPc+'. Perdiste';
+            
           } else if (
               (this.seleccionPc == 'tijera' && seleccion == 'piedra') ||
               (this.seleccionPc == 'piedra' && seleccion == 'papel') ||
@@ -54,8 +58,37 @@ export class PptComponent implements OnInit {
               this.puntuacion++;
               this.mensaje = this.mensaje+this.seleccionPc+'. Ganaste';
             } 
-   
-      }, 1000); 
+      this.verificaFinal();
+      }, 500); 
     }
+
+    verificaFinal(){
+      if(this.puntajePc >= 3){
+        this.mensaje="Perdiste :s";
+        this.seleccionPc ="";
+        this.state = !this.state;
+        this.volverJuegos = true;
+        this.listarPuntaje();
+      }
+      if(this.puntuacion>=3){
+        this.mensaje="Ganaste!"; 
+        this.seleccionPc ="";
+        this.state = !this.state;
+        this.volverJuegos = true;
+        this.listarPuntaje();
+      }
+      }
+
+      recargarJuego(){ 
+        this.volverJuegos=false;
+        this.state = !this.state;
+        this.mensaje='Selecciona una opcion para comenzar';
+        this.puntajePc=0;
+        this.puntuacion=0;   
+       }
+
+       listarPuntaje(){}
+
+
     ngOnInit(): void {}
   } 

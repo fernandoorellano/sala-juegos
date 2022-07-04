@@ -9,8 +9,7 @@ import { AuthService } from '../auth/services/auth.service';
 })
 export class ChatComponent implements OnInit{
   public user$: Observable<any> = this._cs.afAuth.user;
-  mensaje: string='';
-  elemento: any;
+  mensaje: string=''; 
 
   constructor(public _cs: AuthService) { 
     this._cs.cargarMensaje().subscribe();

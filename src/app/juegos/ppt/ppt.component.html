@@ -3,23 +3,32 @@
 </div>
 <a >{{mensaje}}</a>
 <div class="fila" id="cont">
-    <div class="card opcion" (click)="juego('piedra');">
-        <div class="card-body">
-            <img class="card-img-top" src="../../../assets/img/piedra.png">
-            <p class="card-text" aria-hidden="true">piedra</p>
-        </div>
+    <div class="card opcion" >
+        <button [disabled]="state" (click)="juego('piedra');" class="btnOp">
+            <div class="card-body">
+                <img class="card-img-top" src="../../../assets/img/piedra.png">
+                <p class="card-text" aria-hidden="true">piedra</p>
+            </div>
+        </button>
     </div>
-    <div class="card opcion" (click)="juego('papel')">
-        <div class="card-body">
-            <img class="card-img-top" src=" ../../../assets/img/papel.png ">
-            <p class="card-text">papel</p>
-        </div>
+    <div class="card opcion" >
+        <button [disabled]="state" (click)="juego('papel')" class="btnOp">
+            <div class="card-body">
+                <img class="card-img-top" src=" ../../../assets/img/papel.png ">
+                <p class="card-text">papel</p>
+            </div>
+        </button>
     </div>
-    <div class="card opcion" (click)="juego('tijera');">
-        <div class="card-body ">
-            <img class="card-img-top " src="../../../assets/img/tijera.png ">
-            <p class="card-text ">tijera</p>
-        </div>
+    <div class="card opcion" >
+        <button [disabled]="state" (click)="juego('tijera');" class="btnOp">
+            <div class="card-body ">
+                <img class="card-img-top " src="../../../assets/img/tijera.png ">
+                <p class="card-text ">tijera</p>
+            </div>
+        </button>
     </div>
+</div>  
+<div>
+<button class="btn btn-lg" routerLink="/"  type="submit">Ir a inicio</button>
+<button class="btn btn-lg" *ngIf="volverJuegos" (click)="recargarJuego()">Volver a jugar</button>
 </div>
-<button type="button" class="btn btn-lg" routerLink="/"  type="submit">Ir a inicio</button>

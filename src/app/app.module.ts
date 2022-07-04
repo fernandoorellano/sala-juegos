@@ -20,15 +20,27 @@ import { RegisterModule } from './auth/register/register.module';
 import { ChatComponent } from './chat/chat.component'; 
 import { AuthService } from './auth/services/auth.service';
 import { SETTINGS as AUTH_SETTINGS } from '@angular/fire/compat/auth';   
-import { CarouselModule } from './carousel/carousel.module';
+import { CarouselModule } from './carousel/carousel.module'; 
+import { Firestore, collection, addDoc, collectionData, doc, deleteDoc } from '@angular/fire/firestore';
+
+import { ListadoComponent } from './listado/listado.component'; 
+import { AgregarModule } from './listado/agregar/agregar.module';
+import { ListaModule } from './listado/lista/lista.module';
+import { MijuegoComponent } from './juegos/mijuego/mijuego.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     QuiensoyComponent,
     PptComponent, 
-    JuegosComponent, TatetiComponent, AdivinaComponent, AhorcadoComponent, ChatComponent, 
-    
+    JuegosComponent, 
+    TatetiComponent, 
+    AdivinaComponent, 
+    AhorcadoComponent, 
+    ChatComponent,  
+    ListadoComponent, MijuegoComponent,  
   ],
   imports: [
     BrowserModule,
@@ -40,6 +52,8 @@ import { CarouselModule } from './carousel/carousel.module';
     LoginModule,
     RegisterModule,
     CarouselModule,
+    ListaModule,
+    AgregarModule
   ],
   providers: [AuthService,
     { provide: AUTH_SETTINGS, useValue: { appVerificationDisabledForTesting: true } }],

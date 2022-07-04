@@ -15,9 +15,8 @@
     </div>
 </div><br>
  
-<button (click)="validar(i)" *ngFor="let item of abece; index as i" [disabled]="state">{{item}}
-
-
+<button (click)="validar(i)" *ngFor="let item of abece; index as i" [disabled]="state">
+    {{item}}
 </button>
 <br><br>
 <p>{{mensajeErrores}}</p>

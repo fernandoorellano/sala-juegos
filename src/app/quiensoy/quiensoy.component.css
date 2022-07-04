@@ -1,40 +1,120 @@
-.container{  
-    display: flex;
-  justify-content: center;
-}
-
 .left{ 
-    padding-top: 2%; 
-    float: left;  
+    margin-top: 2%;
+    margin-left: 0px;
+    display: inline-block;
+}
+.left img{ 
+    margin-top: -60px;
+    margin-left: -85px;
+    max-width: 170px;
+    max-height: 170px; 
 }
 
-img{
-    width: 320px;
-    height: 220px; 
+.center{ 
+    height: 140px;
+    width: 700px;
+    /* border:solid;  */
+    margin-left: 30px;
+    margin-top: 10px;
+    text-align: center; 
     padding-right: 70px;
+    display: inline-block;
 }
 
-.center{
-    padding-top: 2%;
-    text-align: center;
-    float: center;
-    padding-right: 70px;
+.center p{ 
+    text-align: left;
+    height: 20px;
+    width: 800px; 
+    margin-left: 30px;
+}
+
+.center h2{ 
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .right{ 
+    margin-top: 30px;
+    height: 280px;
+    width: 940px;
+    /* border:solid;  */
     padding-top: 2%;
-    text-align: center;
-    float: right;  
+    text-align: center; 
     padding-right: 70px;
 } 
 
-.right p {
-    padding-left: 50px;
+.right p { 
+    text-align: left; 
 }
 
-p{
-    padding-top: 2%;
-    text-align: center;
-    max-width: 270px;
-    max-height: 270px; 
+.right h2 { 
+    margin-top: -70px;
+    margin-bottom: 20px;
+}
+
+.primerParr{
+    height: 70px;
+    width: 250px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    margin-left: -50px;
+}
+
+
+.primerImg{
+    margin-left: -710px;
+    height: 200px;
+    width: 200px; 
+    margin-top: -10px;
+}
+
+.segundoParr{
+    height: 80px;
+    width: 270px;
+    margin-bottom: 30px;
+    margin-top: -120px;
+    margin-left: 320px;
+}
+
+.segundaImg{
+    
+    margin-top: -460px;
+    height: 200px;
+    width: 200px; 
+}
+
+.tercerParr{
+    height: 100px;
+    width: 250px;
+    margin-bottom: 30px;
+    margin-top: -135px;
+    margin-left: 670px;
+}
+
+.tercerImg{
+    margin-top: -490px;
+    margin-left: 690px;
+    height: 200px;
+    width: 200px; 
+}
+
+.cuartoParr{
+    height: 20px;
+    width: 270px;
+    margin-bottom: 30px;
+    margin-top: -70px;
+    margin-left: 670px;
+}
+
+.cuartoParr a{
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.primerImg:hover,
+.segundaImg:hover,
+.tercerImg:hover{
+    cursor: pointer;
 }

@@ -1,7 +1,16 @@
-img{
-    width: 30px;
-    height: 30px;
-	margin-top: 70px;
+.btnOp{
+    width: 260px;
+    height: 260px;
+	margin-top: 0px; 
+    background: none;
+    border: 0;
+    color: inherit;
+    /* cursor: default; */
+    font: inherit;
+    line-height: normal;
+    overflow: visible;
+    padding: 0; 
+    cursor: pointer;
 }
 
 .container {
@@ -10,7 +19,7 @@ img{
 
 .opcion { 
     width: 260px;
-    height: 260px;
+    height: 280px;
     align-items: center;
     justify-content: center; 
 }

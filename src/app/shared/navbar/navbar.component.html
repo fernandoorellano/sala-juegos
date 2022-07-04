@@ -8,21 +8,25 @@
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav me-auto"> 
           <li class="nav-item">
-            <a class="nav-link active" routerLink="/quiensoy">Quien soy</a>
+            <a class="nav-link" routerLink="/quiensoy">Quien soy</a>
           </li>
           <div class="collapse navbar-collapse" *ngIf="user$ | async as user">
           <li class="nav-item" *ngIf="user">
-            <a class="nav-link active" routerLink="/chat">Chat</a>
+            <a class="nav-link" routerLink="/chat">Chat</a>
           </li> 
-          
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/listado">
+              Listado
+            </a>
+          </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" 
             role="button" data-bs-toggle="dropdown" aria-expanded="false" *ngIf="user">
               Juegos
             </a>
-            
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" >
               <li>
+                <a class="dropdown-item" routerLink="/juegos/mijuego">Mi Juego</a>
                 <a class="dropdown-item" routerLink="/juegos/ppt">Piedra papel o tijera</a>
                 <a class="dropdown-item" routerLink="/juegos/tateti">Tateti</a>
                 <a class="dropdown-item" routerLink="/juegos/adivina">Adivina el numero</a>
@@ -32,9 +36,15 @@
           </li>
           </div>
         </ul>
+
+        <ul class="navbar-nav mx-auto" *ngIf="user$ | async as user">
+          <li class="nav-item">
+            <a class="nav-link">{{user.id}}</a>
+          </li>
+        </ul>
  
         <ul class="navbar-nav mx-auto" *ngIf="user$ | async as user; else login">
-          <li class="nav-item" *ngIf="user">
+          <li class="nav-item">
             <a href="#" class="nav-link" (click)="onLogout()">Logout</a>
           </li>
           <li class="nav-item">

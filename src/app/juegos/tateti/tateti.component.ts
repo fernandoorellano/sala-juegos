@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActualizaPuntajeService } from 'src/app/auth/services/actualiza-puntaje.service';
+import { AgregarListadoService } from 'src/app/auth/services/agregar-listado.service';
+import { PuntajeService } from 'src/app/auth/services/puntaje.service';
 
 @Component({
   selector: 'app-tateti',
@@ -18,15 +21,28 @@ export class TatetiComponent implements OnInit {
   random: number;
   state = false;
   espacio = 0;
+ 
 
-  constructor() {
-    this.terminoJuego = true; 
+  items:any;
+  itemEditar:any={name:''};
+
+
+  constructor(private con:PuntajeService, public agSrv: AgregarListadoService, 
+    public acListSrv: ActualizaPuntajeService) {
+
+    this.terminoJuego = true;  
+
+    this.con.retornaItems().subscribe(items=>{
+      this.items=items;
+      //console.log(this.items);
+    });
   }
 
-  ngOnInit() { 
-  }
+  ngOnInit() {}
 
-  eleccionSigno(signo: string) {
+  eleccionSigno(signo: string) { 
+
+    
     this.botonesEleccion = true;
     this.botonesJuego = false;
     if (signo == "X") {
@@ -48,13 +64,55 @@ export class TatetiComponent implements OnInit {
   }
 
   maquinamov(){
+    let aux1: number=0;
+    let aux2: number=0;
+    let aux3: number=0;
+
     this.resultado = this.validar(this.usuario, "jugador"); 
     if (this.resultado == "Gano" || this.resultado == "Perdio" || this.resultado == "Empate"){ 
       this.desactivar();
-      this.terminoJuego = false;}
+      this.terminoJuego = false;
+      // if(this.resultado == "Gano"){aux1++;  this.editarFormP(this.items);}
+      // if(this.resultado == "Perdio"){aux2++;  this.editarFormG(this.items);}
+      // if(this.resultado == "Empate"){aux3++;  this.editarFormE(this.items);}
+
+      console.log("termino el juego");
+      //this.validar2(aux1, aux2, aux3); 
+    }
     else
       this.jugar();
   }
+
+  // editarP(perdio){
+  //   this.itemEditar=perdio;
+  // }
+  // editarG(gano){
+  //   this.itemEditar=gano;
+  // }
+  // editarE(empato){
+  //   this.itemEditar=empato;
+  // }
+
+  
+  // editarFormP(perdio){
+  //   this.con.editarP(perdio);
+  // }
+  // editarFormG(gano){
+  //   this.con.editarG(gano);
+  // }
+  // editarFormE(empato){
+  //   this.con.editarE(empato);
+  // }
+
+
+
+  validar2(perdio: number, gano:number, empato:number){
+      console.log(this.resultado);
+      //this.agSrv.agregar();
+      this.agSrv.agregar2(perdio, gano, empato);
+  }
+
+
 
   jugar(){
     this.random = Math.floor(Math.random() * 8);
@@ -69,6 +127,8 @@ export class TatetiComponent implements OnInit {
       this.jugar();
     }
   }
+
+
 
   desactivar(){
     this.state = !this.state;

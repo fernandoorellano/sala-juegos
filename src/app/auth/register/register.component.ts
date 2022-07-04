@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core'; 
 import { Router } from '@angular/router';
-
-
 import { AuthService } from '../services/auth.service';
+import { BasedatosService } from '../services/basedatos.service';
 
 @Component({
   selector: 'app-register',
@@ -12,29 +10,41 @@ import { AuthService } from '../services/auth.service';
   providers:[AuthService],
 })
 export class RegisterComponent implements OnInit {
-  registerForm = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl(''),
-  });
-  constructor(private authSvc: AuthService, private router: Router) { }
 
-  ngOnInit(): void {
+ usuarios: any;
+  usuario = {
+    email: '',
+    pass: '',
+    nombre: '',
+    tipoUser: 'normal'
   }
 
-  async onRegister(){
-    //console.log("Form:", this.registerForm.value);
-    const { email, password } = this.registerForm.value;
-    
-    try{
-      const user = await this.authSvc.register(email, password);
-      if(user!==null){
-        //redirect
-        this.router.navigate(['/home']);
-      }
-    }
-    catch(error){
-      console.log(error);
-    }
-    this.authSvc.register(email, password);
+  ngOnInit() {
+    this.database.obtenerTodos("users").subscribe((usuariosRef) => { 
+      this.usuarios = usuariosRef.map(userRef => {
+        let usuario: any = userRef.payload.doc.data();
+        usuario['id'] = userRef.payload.doc.id;
+        return usuario;
+      }); 
+    })
+  }
+
+  constructor(private authSvc: AuthService, private database: BasedatosService, private router: Router) { }
+
+
+  onRegister(){
+    const { email, pass } = this.usuario;
+    this.authSvc.register(email, pass).then(user => { 
+      let lista = [...this.usuarios];
+      let existe = lista.find(user => user.email == email);
+
+      if (!existe) { 
+        this.database.crear('users', this.usuario);
+      };
+
+      this.router.navigate(['/home']);
+    }).catch(err => {
+      console.log(err)
+    })
   }
 }

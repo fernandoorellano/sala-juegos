@@ -14,7 +14,11 @@ export class AuthService {
 
   public chats: Mensaje[] = [];
   public usuario: any={};
-
+  public nombreEmail: Mensaje[] = [];
+  public silverAux:boolean;
+  public premiumAux:boolean;
+  
+  
   constructor(private afs: AngularFirestore, public afAuth: AngularFireAuth) {
     this.afAuth.authState.subscribe( user =>{
       //console.log("estado del usuario: ", user);
@@ -25,8 +29,10 @@ export class AuthService {
 
       this.usuario.nombre = user.email;
       this.usuario.uid = user.uid;
-    })
+      this.nombreEmail = this.usuario.nombre;
+    });
   }
+  
 
   cargarMensaje(){
     this.itemsCollection = this.afs.collection<Mensaje>('chats', ref => ref.orderBy('fecha','desc')
@@ -42,7 +48,6 @@ export class AuthService {
           }
           return this.chats;
         }))
-    
   }
 
   agregarMensaje(texto: string){
@@ -52,43 +57,48 @@ export class AuthService {
       fecha: new Date().getTime(),
       uid: this.usuario.uid
     }
-
     return this.itemsCollection.add(mensaje);
   }
 
-  async login(email: string, password: string){
-    let result;
-    try{
-       result = await this.afAuth.signInWithEmailAndPassword(email, password);
-          //return result;
-
-    }
-    catch(error){
-      console.log(error);
-    }
-    finally{
-      return result;
-     }
-
-    
-  }
   async register(email: string, password: string){
     try{
-    const result = await this.afAuth.createUserWithEmailAndPassword(email, password);
+      return  await this.afAuth.createUserWithEmailAndPassword(email, password);
     } catch(error){
-      console.log(error);
+      console.log("error en login: ", error);
+      return null;
     }
   }
 
-  async logout(){
-    try{
-    await this.afAuth.signOut();
-    }catch(error){
-      console.log(error);
+  async login(email: string, password: string){
+    try {
+      return await this.afAuth.signInWithEmailAndPassword(email, password);
+    } catch (err) {
+      console.log("error en login: ", err);
+      return null;
     }
   }
 
-  devolveer(){
+
+  getUserLogged() {
     return this.afAuth.authState;
   }
+
+  logout() {
+    this.afAuth.signOut();
+  }
+
+  validarLogin(){
+    if(this.nombreEmail.length>=10){
+     //console.log("estoy logeado", this.nombreEmail);
+   return true;}
+   else
+   //console.log("NO estoy logeado", this.nombreEmail.length);
+   return false;
+ }
+
+  preguntarCuenta(){
+    console.log("Cambiate de plan");
+  }
+ 
+
 }
